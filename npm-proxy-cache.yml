@@ -1,5 +1,5 @@
 kind: Deployment
-apiVersion: v1
+apiVersion: extensions/v1beta1
 metadata:
   name: npm-proxy-cache-deployment
 spec:
@@ -14,11 +14,13 @@ spec:
         image: elthariel/kubernetes-npm-proxy-cache:latest
         ports:
         - containerPort: 8080
-      hard:
-        requests.cpu: 0.1
-        requests.memory: 256Mi
-        limits.cpu: 0.2
-        limits.memory: 256Mi
+        resources:
+          limits:
+            cpu: 100m
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
 ---
 kind: Service
 apiVersion: v1
