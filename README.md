@@ -1,0 +1,1 @@
+# kubernetes-npm-proxy-cache
